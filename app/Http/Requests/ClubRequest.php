@@ -23,16 +23,7 @@ class ClubRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'num_holes' => ['required', 'integer'],
-            'city' => ['nullable', 'string'],
-            'country' => ['nullable', 'string'],
-            'phone' => ['nullable', 'string'],
-            'address' => ['nullable', 'string'],
-            'email' => ['nullable', 'email'],
-            'website' => ['nullable', 'url'],
-            'logo' => ['nullable', 'string'],
-            'state' => ['nullable', 'string'],
-            'investor' => ['nullable', 'string']
+            'num_holes' => ['required', 'integer']
         ];
     }
 }

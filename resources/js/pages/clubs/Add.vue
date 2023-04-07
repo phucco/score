@@ -5,13 +5,9 @@
       <div class="card-body">
         <router-link v-bind:to="{ name: 'clubs.index' }" class="btn btn-primary mb-4" >Back to list</router-link>
         <form v-on:submit.prevent="addClub">
-          <div v-if="errors">
-            <div v-for="(v, k) in errors" :key="k" class="bg-red-400 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0">
-                <p v-for="error in v" :key="error" class="text-sm">
-                    {{ error }}
-                </p>
-            </div>
-        </div>
+          <div v-if="errors" class="alert alert-danger">
+            {{ errors }}
+          </div>
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label">Name:</label>
             <div class="col-md-4">
@@ -30,6 +26,16 @@
             <label class="col-md-2 col-form-label">City:</label>
             <div class="col-md-4">
               <input type="text" class="form-control" v-model="club.city">
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label">State:</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" v-model="club.state">
+            </div>
+            <label class="col-md-2 col-form-label">Country:</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" v-model="club.country">
             </div>
           </div>
           <div class="form-group row mb-2">
@@ -52,16 +58,6 @@
               <input type="text" class="form-control" v-model="club.logo">
             </div>
           </div>
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label">State:</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control" v-model="club.state">
-            </div>
-            <label class="col-md-2 col-form-label">Country:</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control" v-model="club.country">
-            </div>
-          </div>
           <div class="form-group row mb-4">
             <label class="col-md-2 col-form-label">Investor:</label>
             <div class="col-md-4">
@@ -76,7 +72,7 @@
 </template>
 
 <script setup>
-import useClubs from '../../composables/clubs'
+import useClubs from '@/composables/clubs'
 import { reactive } from 'vue'
 
 const { errors, storeClub } = useClubs()

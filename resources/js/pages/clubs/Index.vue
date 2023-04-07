@@ -23,7 +23,10 @@
                 <td>{{ item.num_holes }}</td>
                 <td>{{ item.address }}</td>
                 <td>{{ item.city }}</td>
-                <td><button v-on:click="deleteClub(item.id)" class="btn btn-danger">Delete</button></td>
+                <td>
+                  <router-link v-bind:to="{ name: 'clubs.show', params: { id: item.id } }" class="btn btn-success me-2"><i class="bi bi-eye"></i></router-link>
+                  <button v-on:click="deleteClub(item.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                </td>
               </tr>
             </template>
           </tbody>
@@ -48,10 +51,6 @@ import { onMounted } from 'vue'
 const { clubs, getClubs, total, destroyClub } = useClubs()
 
 const deleteClub = async (id) => {
-  if (!window.confirm('You sure?')) {
-    return
-  }
-
   await destroyClub(id)
   await getClubs()
 }
