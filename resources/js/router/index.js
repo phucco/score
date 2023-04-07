@@ -3,6 +3,7 @@ import Home from '@/pages/Home.vue'
 import ClubIndex from '@/pages/clubs/Index.vue'
 import ClubAdd from '@/pages/clubs/Add.vue'
 import ClubShow from '@/pages/clubs/Show.vue'
+import ClubEdit from '@/pages/clubs/Edit.vue'
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: '/clubs/:id',
     name: 'clubs.show',
     component: ClubShow,
+    props: true
+  },
+  {
+    path: '/clubs/:id/edit',
+    name: 'clubs.edit',
+    component: ClubEdit,
     props: true
   },
 ]

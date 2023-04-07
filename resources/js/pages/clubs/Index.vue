@@ -3,16 +3,16 @@
     <div class="card">
       <div class="card-header">List of clubs</div>
       <div class="card-body">
-        <router-link v-bind:to="{ name: 'clubs.add' }" class="btn btn-primary mb-4" >Add new club</router-link>
+        <router-link v-bind:to="{ name: 'clubs.add' }" class="btn btn-primary mb-4"><i class="bi bi-plus-lg me-2"></i>Add new club</router-link>
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>No.</th>
-              <th>Name</th>
-              <th>Num holes</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>Actions</th>
+              <th class="col-md-1">No.</th>
+              <th class="col-md-3">Name</th>
+              <th class="col-md-1">Num holes</th>
+              <th class="col-md-3">Address</th>
+              <th class="col-md-2">City</th>
+              <th class="col-md-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +24,8 @@
                 <td>{{ item.address }}</td>
                 <td>{{ item.city }}</td>
                 <td>
-                  <router-link v-bind:to="{ name: 'clubs.show', params: { id: item.id } }" class="btn btn-success me-2"><i class="bi bi-eye"></i></router-link>
+                  <router-link v-bind:to="{ name: 'clubs.show', params: { id: item.id } }" class="btn btn-info me-2"><i class="bi bi-eye"></i></router-link>
+                  <router-link v-bind:to="{ name: 'clubs.edit', params: { id: item.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil"></i></router-link>
                   <button v-on:click="deleteClub(item.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                 </td>
               </tr>

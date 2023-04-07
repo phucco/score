@@ -28,15 +28,13 @@ export default function useClubs(){
         errors.value = ''
         try {
             await axios.post(CLUB_URL, data)
-            // await router.push({name: 'clubs.index'})
-            console.log(data)
+            await router.push({name: 'clubs.index'})
         } catch (e) {
             if(e.response.status === 422){
                 for(let key in e.response.data.errors){
                     errors.value += e.response.data.errors[key][0] + ' '
                 }
             }
-            console.log(e.response)
         }
     }
 

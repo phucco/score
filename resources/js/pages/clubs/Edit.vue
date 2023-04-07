@@ -1,10 +1,10 @@
 <template>
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header">Add new club</div>
+      <div class="card-header">Edit club: {{ club.name }}</div>
       <div class="card-body">
         <router-link v-bind:to="{ name: 'clubs.index' }" class="btn btn-primary mb-4"><i class="bi bi-arrow-left me-2"></i>Back to list</router-link>
-        <form v-on:submit.prevent="addClub">
+        <form v-on:submit.prevent="editClub">
           <div v-if="errors" class="alert alert-danger">
             {{ errors }}
           </div>
@@ -73,25 +73,20 @@
 
 <script setup>
 import useClubs from '@/composables/clubs'
-import { reactive } from 'vue'
+import { onMounted } from 'vue'
 
-const { errors, storeClub } = useClubs()
+const { errors, updateClub, getClub, club } = useClubs()
 
-const club = reactive({
-  name: '',
-  num_holes: 18,
-  city: '',
-  country: 'Vietnam',
-  address: '',
-  phone: '',
-  email: '',
-  website: '',
-  logo: '',
-  state: '',
-  investor: ''
+const editClub = async () => {
+  await updateClub(props.id)
+}
+
+const props = defineProps({
+    id: {
+        required: true,
+        type: String
+    }
 })
 
-const addClub = async () => {
-  await storeClub({ ...club })
-}
+onMounted(() => getClub(props.id))
 </script>

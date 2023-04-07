@@ -1,9 +1,9 @@
 <template>
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header">Club</div>
+      <div class="card-header">Club: {{ club.name }}</div>
       <div class="card-body">
-        <router-link v-bind:to="{ name: 'clubs.index' }" class="btn btn-primary mb-4" >Back to list</router-link>
+        <router-link v-bind:to="{ name: 'clubs.index' }" class="btn btn-primary mb-4"><i class="bi bi-arrow-left me-2"></i>Back to list</router-link>
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -42,6 +42,7 @@
             </tr>
           </tbody>
         </table>
+        <router-link v-if="club.id" v-bind:to="{ name: 'clubs.edit', params: { id: club.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit</router-link>
       </div>
     </div>
   </div>
