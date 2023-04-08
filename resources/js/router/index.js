@@ -8,6 +8,10 @@ import CourseIndex from '@/pages/courses/Index.vue'
 import CourseAdd from '@/pages/courses/Add.vue'
 import CourseShow from '@/pages/courses/Show.vue'
 import CourseEdit from '@/pages/courses/Edit.vue'
+import TournamentIndex from '@/pages/tournaments/Index.vue'
+import TournamentAdd from '@/pages/tournaments/Add.vue'
+import TournamentShow from '@/pages/tournaments/Show.vue'
+import TournamentEdit from '@/pages/tournaments/Edit.vue'
 
 const routes = [
   {
@@ -57,6 +61,28 @@ const routes = [
     path: '/courses/:id/edit',
     name: 'courses.edit',
     component: CourseEdit,
+    props: true
+  },
+  {
+    path: '/tournaments',
+    name: 'tournaments.index',
+    component: TournamentIndex
+  },
+  {
+    path: '/tournaments/add',
+    name: 'tournaments.add',
+    component: TournamentAdd
+  },
+  {
+    path: '/tournaments/:id',
+    name: 'tournaments.show',
+    component: TournamentShow,
+    props: true
+  },
+  {
+    path: '/tournaments/:id/edit',
+    name: 'tournaments.edit',
+    component: TournamentEdit,
     props: true
   },
 ]

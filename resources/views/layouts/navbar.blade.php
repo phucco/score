@@ -13,6 +13,7 @@
         @auth
         <a class="nav-link {{ (request()->is('clubs')) ? 'active' : '' }}" href="/clubs" >{{ __('Clubs') }}</a>
         <a class="nav-link {{ (request()->is('courses')) ? 'active' : '' }}" href="/courses" >{{ __('Courses') }}</a>
+        <a class="nav-link {{ (request()->is('tournaments')) ? 'active' : '' }}" href="/tournaments" >{{ __('Tournaments') }}</a>
         @endauth
       </ul>
 

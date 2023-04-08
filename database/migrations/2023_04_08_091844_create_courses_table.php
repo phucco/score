@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('pars')->nullable();
             $table->integer('total_pars')->default(72);
             $table->string('indexes')->nullable();
-            $table->integer('order')->default(1);
+            $table->integer('men_slope_rating')->default(113);
+            $table->integer('women_slope_rating')->default(113);
+            $table->boolean('is_active')->default(true);
             $table->boolean('is_default')->default(true);
             $table->softDeletes();
             $table->timestamps();

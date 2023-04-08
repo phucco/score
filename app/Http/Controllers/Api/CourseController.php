@@ -11,7 +11,7 @@ class CourseController extends Controller
 {
   public function index()
   {
-    return CourseResource::collection(Course::paginate(10));
+    return CourseResource::collection(Course::with('club')->paginate(10));
   }
 
   public function store(Request $request)
