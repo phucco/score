@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ClubController;
+use App\Http\Controllers\Api\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,8 @@ use App\Http\Controllers\Api\ClubController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// Route::middleware('auth:sanctum')->group(function() {
+  Route::apiResource('clubs', ClubController::class);
+  Route::apiResource('courses', CourseController::class);
+// });
 
-Route::apiResource('clubs', ClubController::class);

@@ -10,7 +10,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav me-auto">
+        @auth
         <a class="nav-link {{ (request()->is('clubs')) ? 'active' : '' }}" href="/clubs" >{{ __('Clubs') }}</a>
+        <a class="nav-link {{ (request()->is('courses')) ? 'active' : '' }}" href="/courses" >{{ __('Courses') }}</a>
+        @endauth
       </ul>
 
       <!-- Right Side Of Navbar -->
