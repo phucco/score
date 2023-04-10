@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default function useClubs(){
+export default function useClubs() {
     const CLUB_URL = '/api/clubs'
 
     const clubs = ref([])

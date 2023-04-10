@@ -7,12 +7,14 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th class="col-md-1">No.</th>
-              <th class="col-md-3">Name</th>
-              <th class="col-md-1">Num holes</th>
+              <th class="col-md-0-5">No.</th>
+              <th class="col-md-auto">Name</th>
+              <th class="col-md-0-5">Holes</th>
               <th class="col-md-3">Address</th>
-              <th class="col-md-2">City</th>
-              <th class="col-md-2">Actions</th>
+              <th class="col-md-1">City</th>
+              <th class="col-md-1-5">Phone</th>
+              <th class="col-md-0-5">Active</th>
+              <th class="col-md-1-5">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -23,6 +25,8 @@
                 <td>{{ item.num_holes }}</td>
                 <td>{{ item.address }}</td>
                 <td>{{ item.city }}</td>
+                <td>{{ item.phone }}</td>
+                <td><ActiveMark active="item.is_active" /></td>
                 <td>
                   <router-link v-bind:to="{ name: 'clubs.show', params: { id: item.id } }" class="btn btn-info me-2"><i class="bi bi-eye"></i></router-link>
                   <router-link v-bind:to="{ name: 'clubs.edit', params: { id: item.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil"></i></router-link>
@@ -48,6 +52,7 @@
 <script setup>
 import useClubs from '@/composables/clubs'
 import { onMounted } from 'vue'
+import ActiveMark from '@/components/ActiveMark.vue'
 
 const { clubs, getClubs, total, destroyClub } = useClubs()
 

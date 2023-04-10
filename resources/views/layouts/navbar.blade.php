@@ -14,6 +14,19 @@
         <a class="nav-link {{ (request()->is('clubs')) ? 'active' : '' }}" href="/clubs" >{{ __('Clubs') }}</a>
         <a class="nav-link {{ (request()->is('courses')) ? 'active' : '' }}" href="/courses" >{{ __('Courses') }}</a>
         <a class="nav-link {{ (request()->is('tournaments')) ? 'active' : '' }}" href="/tournaments" >{{ __('Tournaments') }}</a>
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown2" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            Config
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" href="/formats">
+              {{ __('Formats') }}
+            </a>
+            <a class="dropdown-item" href="/tiebreakings">
+              {{ __('Tie-breakings') }}
+            </a>
+          </div>
+        </li>
         @endauth
       </ul>
 

@@ -7,14 +7,15 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>No.</th>
-              <th>Course</th>
-              <th>Name</th>
-              <th>Date & Time</th>
-              <th>Format</th>
-              <th>Groups</th>
-              <th>Note</th>
-              <th>Actions</th>
+              <th class="col-md-0-5">No.</th>
+              <th class="col-md-2">Course</th>
+              <th class="col-md-auto">Name</th>
+              <th class="col-md-2">Date & Time</th>
+              <th class="col-md-1">Format</th>
+              <th class="col-md-1">Tie breaking</th>
+              <th class="col-md-1">Groups</th>
+              <th class="col-md-1">Note</th>
+              <th class="col-md-1-5">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +25,8 @@
                 <td>{{ item.course_name_with_club }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.datetime }}</td>
-                <td>{{ item.format }}</td>
+                <td>{{ item.format.name }}</td>
+                <td>{{ item.tiebreaking.name }}</td>
                 <td>{{ item.groups }}</td>
                 <td>{{ item.note }}</td>
                 <td>

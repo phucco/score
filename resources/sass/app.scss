@@ -30,3 +30,15 @@ table.text-center > tbody > tr > td > input {
   text-align: center;
   vertical-align: middle !important;
 }
+
+@media (min-width: 768px) {
+  .col-md-0-5 {
+    flex: 0 0 auto;
+    width: 4.166666667%;
+  }
+
+  .col-md-1-5 {
+    flex: 0 0 auto;
+    width: 12.5%;
+  }
+}

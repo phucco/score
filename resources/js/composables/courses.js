@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default function useCourses(){
+export default function useCourses() {
     const COURSE_URL = '/api/courses'
 
     const courses = ref([])

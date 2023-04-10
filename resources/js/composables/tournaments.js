@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-export default function useTournaments(){
+export default function useTournaments() {
     const TOURNAMENT_URL = '/api/tournaments'
 
     const tournaments = ref([])

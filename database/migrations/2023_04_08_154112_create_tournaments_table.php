@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('course_id');
-            $table->string('format')->nullable();
+            $table->integer('format_id')->nullable();
             $table->string('tie_breaking')->nullable();
             $table->datetime('datetime')->nullable();
             $table->string('nearest_to_the_line')->nullable();

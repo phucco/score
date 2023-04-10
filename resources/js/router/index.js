@@ -12,6 +12,8 @@ import TournamentIndex from '@/pages/tournaments/Index.vue'
 import TournamentAdd from '@/pages/tournaments/Add.vue'
 import TournamentShow from '@/pages/tournaments/Show.vue'
 import TournamentEdit from '@/pages/tournaments/Edit.vue'
+import FormatIndex from '@/pages/formats/Index.vue'
+import TiebreakingIndex from '@/pages/tiebreakings/Index.vue'
 
 const routes = [
   {
@@ -84,6 +86,16 @@ const routes = [
     name: 'tournaments.edit',
     component: TournamentEdit,
     props: true
+  },
+  {
+    path: '/formats',
+    name: 'formats.index',
+    component: FormatIndex
+  },
+  {
+    path: '/tiebreakings',
+    name: 'tiebreakings.index',
+    component: TiebreakingIndex
   },
 ]
 

@@ -12,8 +12,8 @@ class Tournament extends Model
   protected $fillable = [
     'name',
     'course_id',
-    'format',
-    'tie_breaking',
+    'format_id',
+    'tiebreaking_id',
     'datetime',
     'nearest_to_the_line',
     'nearest_to_the_pin',
@@ -28,5 +28,13 @@ class Tournament extends Model
 
   public function course() {
     return $this->belongsTo(Course::class);
+  }
+
+  public function format() {
+    return $this->belongsTo(Format::class);
+  }
+
+  public function tiebreaking() {
+    return $this->belongsTo(Tiebreaking::class);
   }
 }
