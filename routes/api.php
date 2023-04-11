@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\FormatController;
 use App\Http\Controllers\Api\TiebreakingController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\TournamentController;
+use App\Http\Controllers\Api\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::apiResource('tiebreakings', TiebreakingController::class);
   Route::apiResource('courses', CourseController::class);
   Route::apiResource('tournaments', TournamentController::class);
+  Route::apiResource('groups', GroupController::class);
 // });
 

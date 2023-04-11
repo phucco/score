@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
     'club_id',
     'name',
@@ -17,6 +17,12 @@ class Course extends Model
     'indexes',
     'order',
     'is_default'
+  ];
+
+  protected $hidden = [
+    'created_at',
+    'deleted_at',
+    'updated_at'
   ];
 
   public function club() {

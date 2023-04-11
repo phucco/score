@@ -11,7 +11,7 @@ class TournamentController extends Controller
 {
   public function index()
   {
-    return TournamentResource::collection(Tournament::with('course')->paginate(10));
+    return TournamentResource::collection(Tournament::with('course', 'groups', 'format', 'tiebreaking')->paginate(10));
   }
 
   public function store(Request $request)

@@ -26,6 +26,12 @@ class Tournament extends Model
     'note'
   ];
 
+  protected $hidden = [
+    'created_at',
+    'deleted_at',
+    'updated_at'
+  ];
+
   public function course() {
     return $this->belongsTo(Course::class);
   }
@@ -36,5 +42,9 @@ class Tournament extends Model
 
   public function tiebreaking() {
     return $this->belongsTo(Tiebreaking::class);
+  }
+
+  public function groups() {
+    return $this->hasMany(Group::class);
   }
 }

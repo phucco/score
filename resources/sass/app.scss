@@ -22,6 +22,10 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
+select {
+  -webkit-appearance: menulist !important;
+}
+
 thead > tr > td {
   text-align: center;
 }

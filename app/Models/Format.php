@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Format extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = [
-      'name',
-      'is_active',
-      'note'
-    ];
+  protected $fillable = [
+    'name',
+    'is_active',
+    'note'
+  ];
+
+  protected $hidden = [
+    'created_at',
+    'deleted_at',
+    'updated_at'
+  ];
 }

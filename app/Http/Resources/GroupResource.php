@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CourseResource extends JsonResource
+class GroupResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,7 @@ class CourseResource extends JsonResource
     public function toArray(Request $request): array
     {
         $data = parent::toArray($request);
-        $data['club'] = new ClubResource($this->club);
-        $data['name_with_course_name'] = $this->club->name . ' - ' . $this->name;
+        $data['tournament'] = new TournamentResource($this->tournament);
 
         return $data;
     }
