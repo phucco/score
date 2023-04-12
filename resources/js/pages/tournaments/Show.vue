@@ -21,16 +21,21 @@
             <tr>
               <td class="col-md-2">Date time:</td>
               <td class="col-md-4">{{ tournament.datetime }}</td>
-              <td class="col-md-2">Auto assign to groups:</td>
-              <td class="col-md-4"><ActiveMark active="item.auto_assign_to_groups" /></td>
+              <td class="col-md-2">Auto assign to divisions:</td>
+              <td class="col-md-4"><ActiveMark active="item.auto_assign_to_divisions" /></td>
             </tr>
             <tr>
-              <td class="col-md-2">Groups:</td>
-              <td class="col-md-4" v-if="tournament.groups">{{ tournament.groups.map(a => a.name).toString() }}</td>
+              <td>Note:</td>
+              <td colspan="3">{{ tournament.note }}</td>
             </tr>
           </tbody>
         </table>
+
+        <div class="col-md-2">Divisions:</div>
+              <div class="col-md-4" v-if="tournament.divisions">{{ tournament.divisions.map(a => a.name).toString() }}</div>
+
         <router-link v-if="tournament.id" v-bind:to="{ name: 'tournaments.edit', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit</router-link>
+        <router-link v-if="tournament.id" v-bind:to="{ name: 'divisions.add', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit Divisions</router-link>
       </div>
     </div>
   </div>

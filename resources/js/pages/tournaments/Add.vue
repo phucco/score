@@ -45,9 +45,16 @@
             <div class="col-md-4">
               <input type="datetime-local" class="form-control" v-model="tournament.datetime">
             </div>
-            <label class="col-md-2 col-form-label">Auto assign to groups:</label>
+            <label class="col-md-2 col-form-label">Auto assign to divisions:</label>
             <div class="col-md-4">
-              <input type="checkbox" class="form-check-input" v-model="tournament.auto_assign_to_groups">
+              <input type="checkbox" class="form-check-input" v-model="tournament.auto_assign_to_divisions" v-bind:true-value="1"
+    v-bind:false-value="0">
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label">Note:</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" v-model="tournament.note">
             </div>
           </div>
           <button class="btn btn-success"><i class="bi bi-save me-2"></i>Save</button>
@@ -62,7 +69,7 @@ import useTournaments from '@/composables/tournaments'
 import useCourses from '@/composables/courses'
 import useFormats from '@/composables/formats'
 import useTiebreakings from '@/composables/tiebreakings'
-import { reactive, onMounted, computed } from 'vue'
+import { reactive, onMounted } from 'vue'
 
 const { courses, getCourses } = useCourses()
 const { formats, getFormats } = useFormats()
@@ -75,12 +82,12 @@ const tournament = reactive({
   tiebreaking_id: '',
   course_id: '',
   datetime: '',
-  auto_assign_to_groups: false
+  auto_assign_to_divisions: false,
+  note: ''
 })
 
 const addTournament = async () => {
-  // await storeTournament({ ...tournament })
-  console.log({ ...tournament })
+  await storeTournament({ ...tournament })
 }
 
 onMounted(() => {

@@ -4,7 +4,6 @@
       <div class="card-header">List of tournaments</div>
       <div class="card-body">
         <router-link v-bind:to="{ name: 'tournaments.add' }" class="btn btn-primary mb-4"><i class="bi bi-plus-lg me-2"></i>Add new tournament</router-link>
-        <p>Remove group column. Auto assign to divisions -> auto assign to groups</p>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -14,7 +13,7 @@
               <th class="col-md-2">Date & Time</th>
               <th class="col-md-1">Format</th>
               <th class="col-md-1">Tie breaking</th>
-              <th class="col-md-1">Groups</th>
+              <th class="col-md-1">Divisions</th>
               <th class="col-md-1">Note</th>
               <th class="col-md-1-5">Actions</th>
             </tr>
@@ -28,7 +27,7 @@
                 <td>{{ item.datetime }}</td>
                 <td>{{ item.format.name }}</td>
                 <td>{{ item.tiebreaking.name }}</td>
-                <td>{{ item.groups.map(a => a.name).toString() }}</td>
+                <td>{{ item.divisions.map(a => a.name).toString() }}</td>
                 <td>{{ item.note }}</td>
                 <td>
                   <router-link v-bind:to="{ name: 'tournaments.show', params: { id: item.id } }" class="btn btn-info me-2"><i class="bi bi-eye"></i></router-link>

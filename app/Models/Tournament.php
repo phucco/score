@@ -20,7 +20,6 @@ class Tournament extends Model
     'longest_drive',
     'best_gross',
     'best_net',
-    'groups',
     'is_finish',
     'auto_assign_to_divisions',
     'note'
@@ -44,7 +43,7 @@ class Tournament extends Model
     return $this->belongsTo(Tiebreaking::class);
   }
 
-  public function groups() {
-    return $this->hasMany(Group::class);
+  public function divisions() {
+    return $this->hasMany(Division::class);
   }
 }

@@ -14,7 +14,7 @@ import TournamentShow from '@/pages/tournaments/Show.vue'
 import TournamentEdit from '@/pages/tournaments/Edit.vue'
 import FormatIndex from '@/pages/formats/Index.vue'
 import TiebreakingIndex from '@/pages/tiebreakings/Index.vue'
-import GroupAdd from '@/pages/groups/Add.vue'
+import DivisionAdd from '@/pages/divisions/Add.vue'
 
 const routes = [
   {
@@ -99,9 +99,9 @@ const routes = [
     component: TiebreakingIndex
   },
   {
-    path: '/groups/tournament/:id/add',
-    name: 'groups.add',
-    component: GroupAdd,
+    path: '/divisions/tournament/:id/add',
+    name: 'divisions.add',
+    component: DivisionAdd,
     props: true
   },
 ]

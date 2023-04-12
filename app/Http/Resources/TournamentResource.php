@@ -19,7 +19,7 @@ class TournamentResource extends JsonResource
         $data['course'] = new CourseResource($this->course);
         $data['format'] = new FormatResource($this->format);
         $data['tiebreaking'] = new TiebreakingResource($this->tiebreaking);
-        $data['groups'] = $this->groups;
+        $data['divisions'] = $this->divisions;
         $data['course_name_with_club'] = $this->course->club->name . ' - ' . $this->course->name;
 
         return $data;

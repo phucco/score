@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('best_gross')->nullable();
             $table->string('best_net')->nullable();
             $table->boolean('is_finish')->default(0);
-            $table->boolean('auto_assign_to_groups')->default(0);
+            $table->boolean('auto_assign_to_divisions')->default(0);
             $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
