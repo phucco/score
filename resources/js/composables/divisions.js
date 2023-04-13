@@ -3,30 +3,30 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useDivisions() {
-    const DIVISION_URL = '/api/divisions'
+  const DIVISION_URL = '/api/divisions'
 
-    const divisions = ref([])
-    const division = ref([])
+  const divisions = ref([])
+  const division = ref([])
     // const errors = ref('')
     const router = useRouter()
 
     const getDivisions = async () => {
-        let response = await axios.get(DIVISION_URL)
-        divisions.value = response.data.data
+      let response = await axios.get(DIVISION_URL)
+      divisions.value = response.data.data
     }
 
     const getDivision = async (id) => {
-        let response = await axios.get(DIVISION_URL + '/' + id)
-        division.value = response.data.data
+      let response = await axios.get(DIVISION_URL + '/' + id)
+      division.value = response.data.data
     }
 
     const storeDivision = async (data) => {
-        try {
-            await axios.post(DIVISION_URL, data)
-            await router.push({name: 'tournaments.index'})
-        } catch (e) {
-            console.log(e)
-        }
+      try {
+        await axios.post(DIVISION_URL, data)
+        await router.push({name: 'tournaments.index'})
+      } catch (e) {
+        console.log(e)
+      }
     }
 
     // const updateDivision = async (id) => {
@@ -52,13 +52,13 @@ export default function useDivisions() {
     // }
 
     return{
-        division,
-        divisions,
+      division,
+      divisions,
         // errors,
         getDivision,
         getDivisions,
         storeDivision,
         // updateDivision,
         // destroyDivision
+      }
     }
-}

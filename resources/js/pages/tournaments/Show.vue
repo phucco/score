@@ -31,14 +31,40 @@
           </tbody>
         </table>
 
-        <div class="col-md-2">Divisions:</div>
-              <div class="col-md-4" v-if="tournament.divisions">{{ tournament.divisions.map(a => a.name).toString() }}</div>
+        <div class="ms-2 mb-2">Divisions: <span v-if="tournament.divisions && ! tournament.divisions.length">None</span></div>
 
-        <router-link v-if="tournament.id" v-bind:to="{ name: 'tournaments.edit', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit</router-link>
-        <router-link v-if="tournament.id" v-bind:to="{ name: 'divisions.add', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit Divisions</router-link>
-      </div>
+        <table v-if="tournament.divisions && tournament.divisions.length" class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>HDC index</th>
+              <th>HDC course</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody v-if="tournament.divisions">
+            <template v-for="(item, index) in tournament.divisions" v-bind:key="index">
+             <tr>
+              <td>{{ item.name }}</td>
+              <td>
+                <span v-if="item.name === 'm'">Male</span>
+                <span v-else>Female</span>
+              </td>
+              <td>{{ item.handicap_index_limit }}</td>
+              <td>{{ item.handicap_course_limit }}</td>
+              <td>{{ item.note }}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+
+      <router-link v-if="tournament.id" v-bind:to="{ name: 'tournaments.edit', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit</router-link>
+      <router-link v-if="tournament.id" v-bind:to="{ name: 'divisions.add', params: { id: tournament.id } }" class="btn btn-primary me-2"><i class="bi bi-pencil me-2"></i>Add Divisions</router-link>
+      <router-link v-if="tournament.id" v-bind:to="{ name: 'divisions.edit', params: { id: tournament.id } }" class="btn btn-warning me-2"><i class="bi bi-pencil me-2"></i>Edit Divisions</router-link>
     </div>
   </div>
+</div>
 </template>
 
 <script setup>
@@ -49,10 +75,10 @@ import ActiveMark from '@/components/ActiveMark.vue'
 const { tournament, getTournament } = useTournaments()
 
 const props = defineProps({
-    id: {
-        required: true,
-        type: String
-    }
+  id: {
+    required: true,
+    type: String
+  }
 })
 
 onMounted(() => getTournament(props.id))

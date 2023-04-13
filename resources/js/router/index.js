@@ -15,6 +15,7 @@ import TournamentEdit from '@/pages/tournaments/Edit.vue'
 import FormatIndex from '@/pages/formats/Index.vue'
 import TiebreakingIndex from '@/pages/tiebreakings/Index.vue'
 import DivisionAdd from '@/pages/divisions/Add.vue'
+import DivisionEdit from '@/pages/divisions/Edit.vue'
 
 const routes = [
   {
@@ -102,6 +103,12 @@ const routes = [
     path: '/divisions/tournament/:id/add',
     name: 'divisions.add',
     component: DivisionAdd,
+    props: true
+  },
+  {
+    path: '/divisions/tournament/:id/edit',
+    name: 'divisions.edit',
+    component: DivisionEdit,
     props: true
   },
 ]

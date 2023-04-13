@@ -14,7 +14,6 @@ class TournamentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         $data = parent::toArray($request);
         $data['course'] = new CourseResource($this->course);
         $data['format'] = new FormatResource($this->format);

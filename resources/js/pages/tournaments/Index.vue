@@ -27,7 +27,10 @@
                 <td>{{ item.datetime }}</td>
                 <td>{{ item.format.name }}</td>
                 <td>{{ item.tiebreaking.name }}</td>
-                <td>{{ item.divisions.map(a => a.name).toString() }}</td>
+                <td>
+                  <span v-if="item.divisions.map(a => a.name).toString()">{{ item.divisions.map(a => a.name).toString() }}</span>
+                  <router-link v-else v-bind:to="{ name: 'divisions.add', params: { id: item.id } }" class="btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Add</router-link>
+                </td>
                 <td>{{ item.note }}</td>
                 <td>
                   <router-link v-bind:to="{ name: 'tournaments.show', params: { id: item.id } }" class="btn btn-info me-2"><i class="bi bi-eye"></i></router-link>

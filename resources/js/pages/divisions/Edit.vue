@@ -8,7 +8,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label">Divisions:</label>
             <div class="col-md-10">
-              <input type="number" class="form-control" v-model="number_of_divisions">
+              <input type="number" class="form-control" v-model="tournament.divisions.length">
             </div>
           </div>
           <div class="form-group mt-4 mb-2">
@@ -23,7 +23,7 @@
                 </tr>
               </thead>
               <tbody>
-                <template v-for="(division, index) in divisions" v-bind:key="index">
+                <template v-for="(division, index) in tournament.divisions" v-bind:key="index">
                    <tr>
                       <td><input class="form-control" type="text" v-model="division.name"></td>
                       <td>
@@ -49,32 +49,30 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, reactive, onMounted, watch, onUpdated } from 'vue'
 import useTournaments from '@/composables/tournaments'
 import useDivisions from '@/composables/divisions'
 
 const { tournament, getTournament } = useTournaments()
 const { storeDivision } = useDivisions()
 
-const number_of_divisions = ref(2)
-const divisions = ref([{'tournament_id': props.id, 'gender': 'm'}, {'tournament_id': props.id, 'gender': 'm'}])
+// const addDivision = async () => {
+//   divisions.value = divisions.value.filter(e => Object.keys(e).length)
+//   divisions.value.forEach(async (division) => {
+//     await storeDivision({ ... division })
+//     // console.log(division)
+//   })
+// }
 
-const addDivision = async () => {
-  divisions.value = divisions.value.filter(e => Object.keys(e).length)
-  divisions.value.forEach(async (division) => {
-    await storeDivision({ ... division })
-  })
-}
-
-watch(number_of_divisions, (newVal, oldVal) => {
-  if (newVal > oldVal) {
-    for(var i = 0; i < newVal - oldVal; i++ ) {
-      divisions.value.push({'tournament_id': props.id, 'gender': 'm'})
-    }
-  } else {
-    divisions.value = divisions.value.slice(0, newVal - oldVal)
-  }
-})
+// watch(number_of_divisions, (newVal, oldVal) => {
+//   if (newVal > oldVal) {
+//     for(var i = 0; i < newVal - oldVal; i++ ) {
+//       divisions.value.push({'tournament_id': props.id, 'gender': 'm'})
+//     }
+//   } else {
+//     divisions.value = divisions.value.slice(0, newVal - oldVal)
+//   }
+// })
 
 const props = defineProps({
   id: {
@@ -86,4 +84,8 @@ const props = defineProps({
 onMounted(() => {
   getTournament(props.id)
 })
+
+  //     divisions.value = [{'tournament_id': props.id, 'gender': 'm'}, {'tournament_id': props.id, 'gender': 'm'}]
+  //     console.log('ko')
+  //   }
 </script>
