@@ -87,7 +87,8 @@ const tournament = reactive({
 })
 
 const addTournament = async () => {
-  await storeTournament({ ...tournament })
+  // await storeTournament({ ...tournament })
+  console.log(tournament)
 }
 
 onMounted(() => {
