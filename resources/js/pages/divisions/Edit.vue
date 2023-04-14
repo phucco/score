@@ -8,7 +8,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label">Divisions:</label>
             <div class="col-md-10">
-              <input type="number" class="form-control" v-model="tournament.divisions.length">
+              <input type="number" class="form-control" v-model="length">
             </div>
           </div>
           <div class="form-group mt-4 mb-2">
