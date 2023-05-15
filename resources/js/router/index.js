@@ -16,6 +16,7 @@ import FormatIndex from '@/pages/formats/Index.vue'
 import TiebreakingIndex from '@/pages/tiebreakings/Index.vue'
 import DivisionAdd from '@/pages/divisions/Add.vue'
 import DivisionEdit from '@/pages/divisions/Edit.vue'
+import NProgress from 'nprogress'
 
 const routes = [
   {
@@ -113,7 +114,20 @@ const routes = [
   },
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    NProgress.start()
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+  NProgress.done()
+})
+
+export default router

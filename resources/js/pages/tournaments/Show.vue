@@ -41,6 +41,7 @@
               <th>HDC index</th>
               <th>HDC course</th>
               <th>Note</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody v-if="tournament.divisions">
@@ -54,6 +55,7 @@
               <td>{{ item.handicap_index_limit }}</td>
               <td>{{ item.handicap_course_limit }}</td>
               <td>{{ item.note }}</td>
+              <td><button v-on:click="deleteDivision(item.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
             </tr>
           </template>
         </tbody>
@@ -69,10 +71,13 @@
 
 <script setup>
 import useTournaments from '@/composables/tournaments'
+import useDivisions from '@/composables/divisions'
 import { onMounted } from 'vue'
 import ActiveMark from '@/components/ActiveMark.vue'
 
 const { tournament, getTournament } = useTournaments()
+
+const { destroyDivision } = useDivisions()
 
 const props = defineProps({
   id: {
@@ -80,6 +85,11 @@ const props = defineProps({
     type: String
   }
 })
+
+const deleteDivision = async (id) => {
+  await destroyDivision(id)
+  await getTournament(props.id)
+}
 
 onMounted(() => getTournament(props.id))
 </script>

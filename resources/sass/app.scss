@@ -8,6 +8,8 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
+@import 'nprogress/nprogress.css';
+
 nav-link .active {
   font-weight: bold;
 }
@@ -33,6 +35,10 @@ thead > tr > td {
 table.text-center > tbody > tr > td > input {
   text-align: center;
   vertical-align: middle !important;
+}
+
+table > tbody > tr > td {
+     vertical-align: middle;
 }
 
 @media (min-width: 768px) {

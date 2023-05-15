@@ -10,9 +10,9 @@
               <th class="col-md-0-5">No.</th>
               <th class="col-md-2">Course</th>
               <th class="col-md-auto">Name</th>
-              <th class="col-md-2">Date & Time</th>
+              <th class="col-md-1">Date & Time</th>
               <th class="col-md-1">Format</th>
-              <th class="col-md-1">Tie breaking</th>
+              <th class="col-md-2">Tie breaking</th>
               <th class="col-md-1">Divisions</th>
               <th class="col-md-1">Note</th>
               <th class="col-md-1-5">Actions</th>

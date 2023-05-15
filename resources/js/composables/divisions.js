@@ -43,13 +43,13 @@ export default function useDivisions() {
     //     }
     // }
 
-    // const destroyDivision = async (id) => {
-    //     if(! window.confirm('Are you sure?')){
-    //         return
-    //     }
-    //     await axios.delete(DIVISION_URL + '/' + id)
-    //     await getDivisions()
-    // }
+    const destroyDivision = async (id) => {
+        if(! window.confirm('Are you sure?')){
+            return
+        }
+        await axios.delete(DIVISION_URL + '/' + id)
+        await getDivisions()
+    }
 
     return{
       division,
@@ -59,6 +59,6 @@ export default function useDivisions() {
         getDivisions,
         storeDivision,
         // updateDivision,
-        // destroyDivision
+        destroyDivision
       }
     }
