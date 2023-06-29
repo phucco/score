@@ -16,6 +16,8 @@ class TournamentResource extends JsonResource
     {
         $data = parent::toArray($request);
         $data['divisions'] = $this->divisions;
+        $data['tiebreaking'] = $this->tiebreaking;
+        $data['format'] = $this->format;
         $data['course_name_with_club'] = $this->course->club->name . ' - ' . $this->course->name;
 
         return $data;

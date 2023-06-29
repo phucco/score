@@ -31,7 +31,7 @@
           </tbody>
         </table>
 
-        <div class="ms-2 mb-2">Divisions: <span v-if="tournament.divisions && ! tournament.divisions.length">None</span></div>
+        <div class="ms-2 mb-2"><strong>Divisions: <span v-if="tournament.divisions && ! tournament.divisions.length">None</span></strong></div>
 
         <table v-if="tournament.divisions && tournament.divisions.length" class="table table-bordered text-center">
           <thead>

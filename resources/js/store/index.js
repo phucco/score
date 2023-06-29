@@ -1,12 +1,4 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from 'vuex'
 
-import loading from "./loading";
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  modules: {
-    loading,
-  },
+export default createStore({
 });
