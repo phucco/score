@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClubController;
 use App\Http\Controllers\Api\FormatController;
 use App\Http\Controllers\Api\TiebreakingController;
@@ -21,10 +22,19 @@ use App\Http\Controllers\Api\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'auth'], function () {
+  Route::post('login', [AuthController::class, 'login']);
+  Route::post('register', [AuthController::class, 'register']);
+
+  Route::group(['middleware' => 'auth:sanctum'], function() {
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('user', [AuthController::class, 'user']);
+  });
 });
-// Route::middleware('auth:sanctum')->group(function() {
+Route::group(['middleware' => 'auth:sanctum'], function() {
+  Route::get('auth/logout', [AuthController::class, 'logout']);
+  Route::get('auth/user', [AuthController::class, 'user']);
+
   Route::apiResource('clubs', ClubController::class);
   Route::apiResource('formats', FormatController::class);
   Route::apiResource('tiebreakings', TiebreakingController::class);
@@ -32,5 +42,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   Route::apiResource('tournaments', TournamentController::class);
   Route::apiResource('divisions', DivisionController::class);
   Route::apiResource('users', UserController::class);
-// });
-
+});

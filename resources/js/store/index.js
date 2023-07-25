@@ -1,4 +1,14 @@
 import { createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+import auth from '@/store/auth'
 
-export default createStore({
-});
+const store = createStore({
+  plugins:[
+    createPersistedState()
+  ],
+  modules:{
+    auth
+  }
+})
+
+export default store

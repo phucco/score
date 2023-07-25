@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '@/store'
 import Home from '@/pages/Home.vue'
+import Login from '@/pages/auth/Login.vue'
 import ClubIndex from '@/pages/clubs/Index.vue'
 import ClubAdd from '@/pages/clubs/Add.vue'
 import ClubShow from '@/pages/clubs/Show.vue'
@@ -23,6 +25,15 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    meta: {
+        middleware: 'guest',
+        title: 'Login'
+      }
   },
   {
     path: '/clubs',
@@ -124,6 +135,21 @@ router.beforeResolve((to, from, next) => {
     NProgress.start()
   }
   next()
+})
+
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.middleware == 'guest') {
+    if (store.state.auth.authenticated) {
+      next({ name: 'home' })
+    }
+    next()
+  } else {
+    if (store.state.auth.authenticated) {
+      next()
+    } else {
+      next({ name: 'login' })
+    }
+  }
 })
 
 router.afterEach((to, from) => {

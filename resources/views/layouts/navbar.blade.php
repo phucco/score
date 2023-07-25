@@ -13,7 +13,7 @@
         @auth
         <a class="nav-link {{ (request()->is('clubs')) ? 'active' : '' }}" href="/clubs" >{{ __('Clubs') }}</a>
         <a class="nav-link {{ (request()->is('courses')) ? 'active' : '' }}" href="/courses" >{{ __('Courses') }}</a>
-        <a id="navbarDropdownTournament" class="nav-link {{ (request()->is('tournaments')) ? 'active' : '' }}" href="/tournaments" >{{ __('Tournaments') }}</a>
+        <a class="nav-link {{ (request()->is('tournaments')) ? 'active' : '' }}" href="/tournaments" >{{ __('Tournaments') }}</a>
         <li class="nav-item dropdown">
           <a id="navbarDropdownConfig" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             Config
@@ -36,12 +36,6 @@
         @if (Route::has('login'))
         <li class="nav-item">
           <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @endif
-
-        @if (Route::has('register'))
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
         </li>
         @endif
         @else
