@@ -24,7 +24,7 @@ class AuthController extends Controller
       'password' => bcrypt($request->password),
     ]);
 
-    if ($user->save()){
+    if ($user->save()) {
       $tokenResult = $user->createToken('Personal Access Token');
       $token = $tokenResult->plainTextToken;
 
@@ -32,8 +32,7 @@ class AuthController extends Controller
         'message' => 'Successfully created user!',
         'accessToken'=> $token,
       ], 201);
-    }
-    else{
+    } else {
       return response()->json(['error'=>'Provide proper details']);
     }
   }
@@ -66,7 +65,7 @@ class AuthController extends Controller
 
   public function user(Request $request)
   {
-    return response()->json($request->user());
+    return response()->json($request->user()->only(['name', 'email']));
   }
 
   public function logout(Request $request)

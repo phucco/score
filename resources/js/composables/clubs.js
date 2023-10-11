@@ -1,10 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useClubs() {
-    const CLUB_URL = '/api/clubs'
-
     const clubs = ref([])
     const total = ref(0)
     const perPage = ref(10)
@@ -13,21 +11,21 @@ export default function useClubs() {
     const router = useRouter()
 
     const getClubs = async () => {
-        let response = await axios.get(CLUB_URL)
+        let response = await api.get('clubs/')
         clubs.value = response.data.data
         total.value = response.data.meta.total
         perPage.value = response.data.meta.per_page
     }
 
     const getClub = async (id) => {
-        let response = await axios.get(CLUB_URL + '/' + id)
+        let response = await api.get('clubs/' + id)
         club.value = response.data.data
     }
 
     const storeClub = async (data) => {
         errors.value = ''
         try {
-            await axios.post(CLUB_URL, data)
+            await api.post('clubs/', data)
             await router.push({name: 'clubs.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -41,7 +39,7 @@ export default function useClubs() {
     const updateClub = async (id) => {
         errors.value = ''
         try {
-            await axios.put(CLUB_URL + '/' + id, club.value)
+            await api.put('clubs/' + id, club.value)
             await router.push({name: 'clubs.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -56,7 +54,7 @@ export default function useClubs() {
         if(! window.confirm('Are you sure?')){
             return
         }
-        await axios.delete(CLUB_URL + '/' + id)
+        await api.delete('clubs/' + id)
         await getClubs()
     }
 

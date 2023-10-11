@@ -130,12 +130,12 @@ const router = createRouter({
   routes
 })
 
-router.beforeResolve((to, from, next) => {
-  if (to.name) {
-    NProgress.start()
-  }
-  next()
-})
+// router.beforeResolve((to, from, next) => {
+//   if (to.name) {
+//     NProgress.start()
+//   }
+//   next()
+// })
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta.middleware == 'guest') {
@@ -152,8 +152,8 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
-router.afterEach((to, from) => {
-  NProgress.done()
-})
+// router.afterEach((to, from) => {
+//   NProgress.done()
+// })
 
 export default router

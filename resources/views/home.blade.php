@@ -15,6 +15,7 @@
 <body>
   <div id="app">
     <Navbar></Navbar>
+    <base-loading></base-loading>
     <main class="py-4 container">
       <router-view></router-view>
     </main>

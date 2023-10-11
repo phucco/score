@@ -1,10 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useCourses() {
-    const COURSE_URL = '/api/courses'
-
     const courses = ref([])
     const total = ref(0)
     const perPage = ref(10)
@@ -13,21 +11,21 @@ export default function useCourses() {
     const router = useRouter()
 
     const getCourses = async () => {
-        let response = await axios.get(COURSE_URL)
+        let response = await api.get('/courses/')
         courses.value = response.data.data
         total.value = response.data.meta.total
         perPage.value = response.data.meta.per_page
     }
 
     const getCourse = async (id) => {
-        let response = await axios.get(COURSE_URL + '/' + id)
+        let response = await api.get('/courses/' + id)
         course.value = response.data.data
     }
 
     const storeCourse = async (data) => {
         errors.value = ''
         try {
-            await axios.post(COURSE_URL, data)
+            await api.post('/courses/', data)
             await router.push({name: 'courses.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -41,7 +39,7 @@ export default function useCourses() {
     const updateCourse = async (id) => {
         errors.value = ''
         try {
-            await axios.put(COURSE_URL + '/' + id, course.value)
+            await api.put('/courses/' + id, course.value)
             await router.push({name: 'courses.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -56,7 +54,7 @@ export default function useCourses() {
         if(! window.confirm('Are you sure?')){
             return
         }
-        await axios.delete(COURSE_URL + '/' + id)
+        await api.delete('/courses/' + id)
         await getCourses()
     }
 

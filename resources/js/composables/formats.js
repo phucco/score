@@ -1,9 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useFormats() {
-    const FORMAT_URL = '/api/formats'
 
     const formats = ref([])
     // const total = ref(0)
@@ -13,21 +12,21 @@ export default function useFormats() {
     // const router = useRouter()
 
     const getFormats = async () => {
-        let response = await axios.get(FORMAT_URL)
+        let response = await api.get('/formats/')
         formats.value = response.data.data
         // total.value = response.data.meta.total
         // perPage.value = response.data.meta.per_page
     }
 
     const getFormat = async (id) => {
-        let response = await axios.get(FORMAT_URL + '/' + id)
+        let response = await api.get('/formats/' + id)
         format.value = response.data.data
     }
 
     // const storeFormat = async (data) => {
     //     errors.value = ''
     //     try {
-    //         await axios.post(FORMAT_URL, data)
+    //         await api.post('/formats/', data)
     //         await router.push({name: 'formats.index'})
     //     } catch (e) {
     //         if(e.response.status === 422){
@@ -41,7 +40,7 @@ export default function useFormats() {
     // const updateFormat = async (id) => {
     //     errors.value = ''
     //     try {
-    //         await axios.put(FORMAT_URL + '/' + id, format.value)
+    //         await api.put('/formats/' + '/' + id, format.value)
     //         await router.push({name: 'formats.index'})
     //     } catch (e) {
     //         if(e.response.status === 422){
@@ -56,7 +55,7 @@ export default function useFormats() {
     //     if(! window.confirm('Are you sure?')){
     //         return
     //     }
-    //     await axios.delete(FORMAT_URL + '/' + id)
+    //     await api.delete('/formats/' + '/' + id)
     //     await getFormats()
     // }
 

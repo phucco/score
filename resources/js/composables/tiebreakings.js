@@ -1,10 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useTiebreakings() {
-    const TIEBREAKING_URL = '/api/tiebreakings'
-
     const tiebreakings = ref([])
     // const total = ref(0)
     // const perPage = ref(10)
@@ -13,21 +11,21 @@ export default function useTiebreakings() {
     // const router = useRouter()
 
     const getTiebreakings = async () => {
-        let response = await axios.get(TIEBREAKING_URL)
+        let response = await api.get('/tiebreakings/')
         tiebreakings.value = response.data.data
         // total.value = response.data.meta.total
         // perPage.value = response.data.meta.per_page
     }
 
     const getTiebreaking = async (id) => {
-        let response = await axios.get(TIEBREAKING_URL + '/' + id)
+        let response = await api.get('/tiebreakings/' + '/' + id)
         tiebreaking.value = response.data.data
     }
 
     // const storeTiebreaking = async (data) => {
     //     errors.value = ''
     //     try {
-    //         await axios.post(TIEBREAKING_URL, data)
+    //         await api.post('/tiebreakings/', data)
     //         await router.push({name: 'tiebreakings.index'})
     //     } catch (e) {
     //         if(e.response.status === 422){
@@ -41,7 +39,7 @@ export default function useTiebreakings() {
     // const updateTiebreaking = async (id) => {
     //     errors.value = ''
     //     try {
-    //         await axios.put(TIEBREAKING_URL + '/' + id, tiebreaking.value)
+    //         await api.put('/tiebreakings/' + '/' + id, tiebreaking.value)
     //         await router.push({name: 'tiebreakings.index'})
     //     } catch (e) {
     //         if(e.response.status === 422){
@@ -56,7 +54,7 @@ export default function useTiebreakings() {
     //     if(! window.confirm('Are you sure?')){
     //         return
     //     }
-    //     await axios.delete(TIEBREAKING_URL + '/' + id)
+    //     await api.delete('/tiebreakings/' + '/' + id)
     //     await getTiebreakings()
     // }
 

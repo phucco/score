@@ -1,10 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useTournaments() {
-    const TOURNAMENT_URL = '/api/tournaments'
-
     const tournaments = ref([])
     const total = ref(0)
     const perPage = ref(10)
@@ -13,21 +11,21 @@ export default function useTournaments() {
     const router = useRouter()
 
     const getTournaments = async () => {
-        let response = await axios.get(TOURNAMENT_URL)
+        let response = await api.get('/tournaments/')
         tournaments.value = response.data.data
         total.value = response.data.meta.total
         perPage.value = response.data.meta.per_page
     }
 
     const getTournament = async (id) => {
-        let response = await axios.get(TOURNAMENT_URL + '/' + id)
+        let response = await api.get('/tournaments/' + id)
         tournament.value = response.data.data
     }
 
     const storeTournament = async (data) => {
         errors.value = ''
         try {
-            await axios.post(TOURNAMENT_URL, data)
+            await api.post('/tournaments/', data)
             await router.push({name: 'tournaments.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -41,7 +39,7 @@ export default function useTournaments() {
     const updateTournament = async (id) => {
         errors.value = ''
         try {
-            await axios.put(TOURNAMENT_URL + '/' + id, tournament.value)
+            await api.put('/tournaments/' + id, tournament.value)
             await router.push({name: 'tournaments.index'})
         } catch (e) {
             if(e.response.status === 422){
@@ -56,7 +54,7 @@ export default function useTournaments() {
         if(! window.confirm('Are you sure?')){
             return
         }
-        await axios.delete(TOURNAMENT_URL + '/' + id)
+        await api.delete('/tournaments/' + id)
         await getTournaments()
     }
 

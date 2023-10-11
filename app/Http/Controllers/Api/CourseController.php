@@ -23,7 +23,7 @@ class CourseController extends Controller
 
   public function show(Course $course)
   {
-    return new CourseResource($course);
+    return new CourseResource($course->load('club'));
   }
 
   public function update(Request $request, Course $course)

@@ -1,9 +1,8 @@
-import axios from 'axios'
+import api from '@/plugins/api.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default function useDivisions() {
-  const DIVISION_URL = '/api/divisions'
 
   const divisions = ref([])
   const division = ref([])
@@ -11,18 +10,18 @@ export default function useDivisions() {
     const router = useRouter()
 
     const getDivisions = async () => {
-      let response = await axios.get(DIVISION_URL)
+      let response = await api.get('/divisions/')
       divisions.value = response.data.data
     }
 
     const getDivision = async (id) => {
-      let response = await axios.get(DIVISION_URL + '/' + id)
+      let response = await api.get('/divisions/' + id)
       division.value = response.data.data
     }
 
     const storeDivision = async (data) => {
       try {
-        await axios.post(DIVISION_URL, data)
+        await api.post('/divisions/', data)
         await router.push({name: 'tournaments.index'})
       } catch (e) {
         console.log(e)
@@ -32,7 +31,7 @@ export default function useDivisions() {
     // const updateDivision = async (id) => {
     //     errors.value = ''
     //     try {
-    //         await axios.put(DIVISION_URL + '/' + id, division.value)
+    //         await api.put('/divisions/' + '/' + id, division.value)
     //         await router.push({name: 'divisions.index'})
     //     } catch (e) {
     //         if(e.response.status === 422){
@@ -47,7 +46,7 @@ export default function useDivisions() {
         if(! window.confirm('Are you sure?')){
             return
         }
-        await axios.delete(DIVISION_URL + '/' + id)
+        await api.delete('/divisions/' + id)
         await getDivisions()
     }
 
