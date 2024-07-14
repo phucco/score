@@ -4,6 +4,7 @@
       <div class="card-header">Dashboard</div>
       <div class="card-body">
         You successfully logged in as {{ user.email }}
+        <br>{{ token }}<br>
       </div>
     </div>
   </div>
@@ -15,4 +16,6 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 const user = computed(() => store.state.auth.user)
+
+const token = localStorage.getItem('accessToken')
 </script>

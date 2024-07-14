@@ -106,10 +106,10 @@ const total_pars = computed(() => {
 
 const addCourse = async () => {
   course.total_pars = total_pars.value
-  course.pars = arrays.pars.toString()
-  course.indexes = arrays.indexes.toString()
-  await storeCourse({ ...course })
-  // console.log({ ...course })
+  course.pars = JSON.stringify(arrays.pars)
+  course.indexes = JSON.stringify(arrays.indexes)
+  // await storeCourse({ ...course })
+  console.log({ ...course })
 }
 
 onMounted(getClubs)

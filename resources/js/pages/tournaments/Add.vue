@@ -87,6 +87,7 @@ const tournament = reactive({
 })
 
 const addTournament = async () => {
+  tournament.datetime = new Date(Date.parse(tournament.datetime)).toISOString().slice(0, 19)
   // await storeTournament({ ...tournament })
   console.log(tournament)
 }

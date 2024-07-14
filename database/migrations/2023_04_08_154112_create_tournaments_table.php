@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('course_id');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->integer('format_id')->nullable();
-            $table->string('tiebreaking_id')->nullable();
-            $table->datetime('datetime')->nullable();
+            $table->integer('tiebreaking_id')->nullable();
+            $table->string('datetime')->nullable();
             $table->string('nearest_to_the_line')->nullable();
             $table->string('nearest_to_the_pin')->nullable();
             $table->string('longest_drive')->nullable();

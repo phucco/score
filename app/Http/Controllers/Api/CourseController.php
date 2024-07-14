@@ -17,6 +17,7 @@ class CourseController extends Controller
   public function store(Request $request)
   {
     $course = Course::create($request->all());
+    var_dump($request);
 
     return new CourseResource($course);
   }

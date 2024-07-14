@@ -92,6 +92,7 @@ const club = reactive({
 })
 
 const addClub = async () => {
-  await storeClub({ ...club })
+  // await storeClub({ ...club })
+  await console.log('data')
 }
 </script>
